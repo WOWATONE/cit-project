@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="iShopDBModelStoreContainer" CdmEntityContainer="iShopDBEntities">
+    <EntitySetMapping Name="BoPhans">
+      <EntityTypeMapping TypeName="iShopDBModel.BoPhan">
+        <MappingFragment StoreEntitySet="BoPhan">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenBoPhan" ColumnName="TenBoPhan" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietHangHoas">
+      <EntityTypeMapping TypeName="iShopDBModel.ChiTietHangHoa">
+        <MappingFragment StoreEntitySet="ChiTietHangHoa">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="HangHoaID" ColumnName="HangHoaID" />
+          <ScalarProperty Name="HoaDonBanID" ColumnName="HoaDonBanID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonViTinhs">
+      <EntityTypeMapping TypeName="iShopDBModel.DonViTinh">
+        <MappingFragment StoreEntitySet="DonViTinh">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenDonViTinh" ColumnName="TenDonViTinh" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HangHoas">
+      <EntityTypeMapping TypeName="iShopDBModel.HangHoa">
+        <MappingFragment StoreEntitySet="HangHoa">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenHangHoa" ColumnName="TenHangHoa" />
+          <ScalarProperty Name="DonViTinhID" ColumnName="DonViTinhID" />
+          <ScalarProperty Name="DonGiaNhap" ColumnName="DonGiaNhap" />
+          <ScalarProperty Name="DonGiaBan" ColumnName="DonGiaBan" />
+          <ScalarProperty Name="NhomHangHoaID" ColumnName="NhomHangHoaID" />
+          <ScalarProperty Name="ChatLieu" ColumnName="ChatLieu" />
+          <ScalarProperty Name="KichCo" ColumnName="KichCo" />
+          <ScalarProperty Name="MauSac" ColumnName="MauSac" />
+          <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDonBans">
+      <EntityTypeMapping TypeName="iShopDBModel.HoaDonBan">
+        <MappingFragment StoreEntitySet="HoaDonBan">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="ChietKhau" ColumnName="ChietKhau" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="ChiTietHangHoaID" ColumnName="ChiTietHangHoaID" />
+          <ScalarProperty Name="KhachHangID" ColumnName="KhachHangID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhachHangs">
+      <EntityTypeMapping TypeName="iShopDBModel.KhachHang">
+        <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoTaiKhoan" ColumnName="SoTaiKhoan" />
+          <ScalarProperty Name="NganHang" ColumnName="NganHang" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhaCungCaps">
+      <EntityTypeMapping TypeName="iShopDBModel.NhaCungCap">
+        <MappingFragment StoreEntitySet="NhaCungCap">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenNhaCungCap" ColumnName="TenNhaCungCap" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="NguoiDaiDien" ColumnName="NguoiDaiDien" />
+          <ScalarProperty Name="SoTaiKhoan" ColumnName="SoTaiKhoan" />
+          <ScalarProperty Name="NganHang" ColumnName="NganHang" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanViens">
+      <EntityTypeMapping TypeName="iShopDBModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BoPhanID" ColumnName="BoPhanID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhomHangHoas">
+      <EntityTypeMapping TypeName="iShopDBModel.NhomHangHoa">
+        <MappingFragment StoreEntitySet="NhomHangHoa">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
+          <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhanQuyens">
+      <EntityTypeMapping TypeName="iShopDBModel.PhanQuyen">
+        <MappingFragment StoreEntitySet="PhanQuyen">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenPhanQuyen" ColumnName="TenPhanQuyen" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="iShopDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="iShopDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="PhanQuyenID" ColumnName="PhanQuyenID" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
