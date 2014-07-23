@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iShopDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="iShopDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BoPhans" EntityType="iShopDBModel.BoPhan" />
+    <EntitySet Name="ChiTietHangHoas" EntityType="iShopDBModel.ChiTietHangHoa" />
+    <EntitySet Name="DonViTinhs" EntityType="iShopDBModel.DonViTinh" />
+    <EntitySet Name="HangHoas" EntityType="iShopDBModel.HangHoa" />
+    <EntitySet Name="HoaDonBans" EntityType="iShopDBModel.HoaDonBan" />
+    <EntitySet Name="KhachHangs" EntityType="iShopDBModel.KhachHang" />
+    <EntitySet Name="NhaCungCaps" EntityType="iShopDBModel.NhaCungCap" />
+    <EntitySet Name="NhanViens" EntityType="iShopDBModel.NhanVien" />
+    <EntitySet Name="NhomHangHoas" EntityType="iShopDBModel.NhomHangHoa" />
+    <EntitySet Name="PhanQuyens" EntityType="iShopDBModel.PhanQuyen" />
+    <EntitySet Name="sysdiagrams" EntityType="iShopDBModel.sysdiagram" />
+    <EntitySet Name="Users" EntityType="iShopDBModel.User" />
+    <AssociationSet Name="FK_NhanVien_BoPhan" Association="iShopDBModel.FK_NhanVien_BoPhan">
+      <End Role="BoPhan" EntitySet="BoPhans" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietHangHoa_HangHoa" Association="iShopDBModel.FK_ChiTietHangHoa_HangHoa">
+      <End Role="HangHoa" EntitySet="HangHoas" />
+      <End Role="ChiTietHangHoa" EntitySet="ChiTietHangHoas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDonBan_ChiTietHangHoa" Association="iShopDBModel.FK_HoaDonBan_ChiTietHangHoa">
+      <End Role="ChiTietHangHoa" EntitySet="ChiTietHangHoas" />
+      <End Role="HoaDonBan" EntitySet="HoaDonBans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HangHoa_DonViTinh" Association="iShopDBModel.FK_HangHoa_DonViTinh">
+      <End Role="DonViTinh" EntitySet="DonViTinhs" />
+      <End Role="HangHoa" EntitySet="HangHoas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HangHoa_NhomHangHoa" Association="iShopDBModel.FK_HangHoa_NhomHangHoa">
+      <End Role="NhomHangHoa" EntitySet="NhomHangHoas" />
+      <End Role="HangHoa" EntitySet="HangHoas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDonBan_KhachHang" Association="iShopDBModel.FK_HoaDonBan_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="HoaDonBan" EntitySet="HoaDonBans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDonBan_User" Association="iShopDBModel.FK_HoaDonBan_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="HoaDonBan" EntitySet="HoaDonBans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NhomHangHoa_NhaCungCap" Association="iShopDBModel.FK_NhomHangHoa_NhaCungCap">
+      <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
+      <End Role="NhomHangHoa" EntitySet="NhomHangHoas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NhanVien_User" Association="iShopDBModel.FK_NhanVien_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_PhanQuyen" Association="iShopDBModel.FK_User_PhanQuyen">
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BoPhan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenBoPhan" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="NhanViens" Relationship="iShopDBModel.FK_NhanVien_BoPhan" FromRole="BoPhan" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="ChiTietHangHoa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
+    <Property Name="HangHoaID" Type="Int32" />
+    <Property Name="HoaDonBanID" Type="Int32" />
+    <NavigationProperty Name="HangHoa" Relationship="iShopDBModel.FK_ChiTietHangHoa_HangHoa" FromRole="ChiTietHangHoa" ToRole="HangHoa" />
+    <NavigationProperty Name="HoaDonBans" Relationship="iShopDBModel.FK_HoaDonBan_ChiTietHangHoa" FromRole="ChiTietHangHoa" ToRole="HoaDonBan" />
+  </EntityType>
+  <EntityType Name="DonViTinh">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDonViTinh" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="HangHoas" Relationship="iShopDBModel.FK_HangHoa_DonViTinh" FromRole="DonViTinh" ToRole="HangHoa" />
+  </EntityType>
+  <EntityType Name="HangHoa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenHangHoa" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="DonViTinhID" Type="Int32" Nullable="false" />
+    <Property Name="DonGiaNhap" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DonGiaBan" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="NhomHangHoaID" Type="Int32" Nullable="false" />
+    <Property Name="ChatLieu" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="KichCo" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="MauSac" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="XuatXu" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="ChiTietHangHoas" Relationship="iShopDBModel.FK_ChiTietHangHoa_HangHoa" FromRole="HangHoa" ToRole="ChiTietHangHoa" />
+    <NavigationProperty Name="DonViTinh" Relationship="iShopDBModel.FK_HangHoa_DonViTinh" FromRole="HangHoa" ToRole="DonViTinh" />
+    <NavigationProperty Name="NhomHangHoa" Relationship="iShopDBModel.FK_HangHoa_NhomHangHoa" FromRole="HangHoa" ToRole="NhomHangHoa" />
+  </EntityType>
+  <EntityType Name="HoaDonBan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayLap" Type="DateTime" Nullable="false" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ChietKhau" Type="Double" />
+    <Property Name="TongTien" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="ChiTietHangHoaID" Type="Int32" Nullable="false" />
+    <Property Name="KhachHangID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChiTietHangHoa" Relationship="iShopDBModel.FK_HoaDonBan_ChiTietHangHoa" FromRole="HoaDonBan" ToRole="ChiTietHangHoa" />
+    <NavigationProperty Name="KhachHang" Relationship="iShopDBModel.FK_HoaDonBan_KhachHang" FromRole="HoaDonBan" ToRole="KhachHang" />
+    <NavigationProperty Name="User" Relationship="iShopDBModel.FK_HoaDonBan_User" FromRole="HoaDonBan" ToRole="User" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenKhachHang" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" />
+    <Property Name="GioiTinh" Type="Boolean" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SoTaiKhoan" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="NganHang" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="HoaDonBans" Relationship="iShopDBModel.FK_HoaDonBan_KhachHang" FromRole="KhachHang" ToRole="HoaDonBan" />
+  </EntityType>
+  <EntityType Name="NhaCungCap">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNhaCungCap" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NguoiDaiDien" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SoTaiKhoan" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="NganHang" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="NhomHangHoas" Relationship="iShopDBModel.FK_NhomHangHoa_NhaCungCap" FromRole="NhaCungCap" ToRole="NhomHangHoa" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNhanVien" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" />
+    <Property Name="GioiTinh" Type="Boolean" Nullable="false" />
+    <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="11" Unicode="false" FixedLength="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="BoPhanID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BoPhan" Relationship="iShopDBModel.FK_NhanVien_BoPhan" FromRole="NhanVien" ToRole="BoPhan" />
+    <NavigationProperty Name="User" Relationship="iShopDBModel.FK_NhanVien_User" FromRole="NhanVien" ToRole="User" />
+  </EntityType>
+  <EntityType Name="NhomHangHoa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNhom" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NhaCungCapID" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="HangHoas" Relationship="iShopDBModel.FK_HangHoa_NhomHangHoa" FromRole="NhomHangHoa" ToRole="HangHoa" />
+    <NavigationProperty Name="NhaCungCap" Relationship="iShopDBModel.FK_NhomHangHoa_NhaCungCap" FromRole="NhomHangHoa" ToRole="NhaCungCap" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenPhanQuyen" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="Users" Relationship="iShopDBModel.FK_User_PhanQuyen" FromRole="PhanQuyen" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDangNhap" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="PhanQuyenID" Type="Int32" Nullable="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="HoaDonBans" Relationship="iShopDBModel.FK_HoaDonBan_User" FromRole="User" ToRole="HoaDonBan" />
+    <NavigationProperty Name="NhanViens" Relationship="iShopDBModel.FK_NhanVien_User" FromRole="User" ToRole="NhanVien" />
+    <NavigationProperty Name="PhanQuyen" Relationship="iShopDBModel.FK_User_PhanQuyen" FromRole="User" ToRole="PhanQuyen" />
+  </EntityType>
+  <Association Name="FK_NhanVien_BoPhan">
+    <End Role="BoPhan" Type="iShopDBModel.BoPhan" Multiplicity="1" />
+    <End Role="NhanVien" Type="iShopDBModel.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BoPhan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="BoPhanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietHangHoa_HangHoa">
+    <End Role="HangHoa" Type="iShopDBModel.HangHoa" Multiplicity="0..1" />
+    <End Role="ChiTietHangHoa" Type="iShopDBModel.ChiTietHangHoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangHoa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietHangHoa">
+        <PropertyRef Name="HangHoaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDonBan_ChiTietHangHoa">
+    <End Role="ChiTietHangHoa" Type="iShopDBModel.ChiTietHangHoa" Multiplicity="1" />
+    <End Role="HoaDonBan" Type="iShopDBModel.HoaDonBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChiTietHangHoa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HoaDonBan">
+        <PropertyRef Name="ChiTietHangHoaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HangHoa_DonViTinh">
+    <End Role="DonViTinh" Type="iShopDBModel.DonViTinh" Multiplicity="1" />
+    <End Role="HangHoa" Type="iShopDBModel.HangHoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonViTinh">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HangHoa">
+        <PropertyRef Name="DonViTinhID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HangHoa_NhomHangHoa">
+    <End Role="NhomHangHoa" Type="iShopDBModel.NhomHangHoa" Multiplicity="1" />
+    <End Role="HangHoa" Type="iShopDBModel.HangHoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhomHangHoa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HangHoa">
+        <PropertyRef Name="NhomHangHoaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDonBan_KhachHang">
+    <End Role="KhachHang" Type="iShopDBModel.KhachHang" Multiplicity="1" />
+    <End Role="HoaDonBan" Type="iShopDBModel.HoaDonBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HoaDonBan">
+        <PropertyRef Name="KhachHangID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDonBan_User">
+    <End Role="User" Type="iShopDBModel.User" Multiplicity="1" />
+    <End Role="HoaDonBan" Type="iShopDBModel.HoaDonBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HoaDonBan">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NhomHangHoa_NhaCungCap">
+    <End Role="NhaCungCap" Type="iShopDBModel.NhaCungCap" Multiplicity="0..1" />
+    <End Role="NhomHangHoa" Type="iShopDBModel.NhomHangHoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaCungCap">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NhomHangHoa">
+        <PropertyRef Name="NhaCungCapID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NhanVien_User">
+    <End Role="User" Type="iShopDBModel.User" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="iShopDBModel.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_PhanQuyen">
+    <End Role="PhanQuyen" Type="iShopDBModel.PhanQuyen" Multiplicity="1" />
+    <End Role="User" Type="iShopDBModel.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanQuyen">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="PhanQuyenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

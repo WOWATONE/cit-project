@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iShopModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="iShopModelStoreContainer">
+    <EntitySet Name="BoPhan" EntityType="iShopModel.Store.BoPhan" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChiTietHoaDon" EntityType="iShopModel.Store.ChiTietHoaDon" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DonViTinh" EntityType="iShopModel.Store.DonViTinh" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HangHoa" EntityType="iShopModel.Store.HangHoa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HoaDonBan" EntityType="iShopModel.Store.HoaDonBan" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KhachHang" EntityType="iShopModel.Store.KhachHang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NhaCungCap" EntityType="iShopModel.Store.NhaCungCap" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NhanVien" EntityType="iShopModel.Store.NhanVien" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NhomHangHoa" EntityType="iShopModel.Store.NhomHangHoa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="iShopModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TaiKhoan" EntityType="iShopModel.Store.TaiKhoan" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ChiTietHoaDon_HangHoa" Association="iShopModel.Store.FK_ChiTietHoaDon_HangHoa">
+      <End Role="HangHoa" EntitySet="HangHoa" />
+      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietHoaDon_HoaDonBan" Association="iShopModel.Store.FK_ChiTietHoaDon_HoaDonBan">
+      <End Role="HoaDonBan" EntitySet="HoaDonBan" />
+      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HangHoa_DonViTinh" Association="iShopModel.Store.FK_HangHoa_DonViTinh">
+      <End Role="DonViTinh" EntitySet="DonViTinh" />
+      <End Role="HangHoa" EntitySet="HangHoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HangHoa_NhomHangHoa" Association="iShopModel.Store.FK_HangHoa_NhomHangHoa">
+      <End Role="NhomHangHoa" EntitySet="NhomHangHoa" />
+      <End Role="HangHoa" EntitySet="HangHoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDonBan_KhachHang" Association="iShopModel.Store.FK_HoaDonBan_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="HoaDonBan" EntitySet="HoaDonBan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDonBan_NhanVien" Association="iShopModel.Store.FK_HoaDonBan_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="HoaDonBan" EntitySet="HoaDonBan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NguoiDung_NhanVien" Association="iShopModel.Store.FK_NguoiDung_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NhanVien_BoPhan" Association="iShopModel.Store.FK_NhanVien_BoPhan">
+      <End Role="BoPhan" EntitySet="BoPhan" />
+      <End Role="NhanVien" EntitySet="NhanVien" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BoPhan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="TenBoPhan" Type="nvarchar" MaxLength="50" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="ChiTietHoaDon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="HangHoaID" Type="varchar" MaxLength="10" />
+    <Property Name="HoaDonBanID" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="DonViTinh">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="TenDonViTinh" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="HangHoa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="TenHangHoa" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="DonViTinhID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="DonGiaNhap" Type="float" Nullable="false" />
+    <Property Name="DonGiaBan" Type="float" Nullable="false" />
+    <Property Name="NhomHangHoaID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="ChatLieu" Type="nvarchar" MaxLength="50" />
+    <Property Name="KichCo" Type="nvarchar" MaxLength="50" />
+    <Property Name="MauSac" Type="nvarchar" MaxLength="20" />
+    <Property Name="XuatXu" Type="nvarchar" MaxLength="50" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+    <Property Name="SoLuong" Type="int" />
+  </EntityType>
+  <EntityType Name="HoaDonBan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="NgayLap" Type="datetime" Nullable="false" />
+    <Property Name="ChietKhau" Type="float" />
+    <Property Name="TongTien" Type="float" />
+    <Property Name="KhachHangID" Type="varchar" MaxLength="10" />
+    <Property Name="NhanVienID" Type="varchar" MaxLength="10" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="TenKhachHang" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="11" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="NhaCungCap">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="TenNhaCungCap" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="11" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="NguoiDaiDien" Type="nvarchar" MaxLength="50" />
+    <Property Name="SoTaiKhoan" Type="varchar" MaxLength="30" />
+    <Property Name="NganHang" Type="varchar" MaxLength="150" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="TenNhanVien" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgaySinh" Type="datetime" />
+    <Property Name="GioiTinh" Type="bit" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="11" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="BoPhanID" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="NhomHangHoa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="TenNhomHang" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="TenDangNhap" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="MatKhau" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="PhanQuyen" Type="bit" Nullable="false" />
+    <Property Name="NhanVienID" Type="varchar" MaxLength="10" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_ChiTietHoaDon_HangHoa">
+    <End Role="HangHoa" Type="iShopModel.Store.HangHoa" Multiplicity="0..1" />
+    <End Role="ChiTietHoaDon" Type="iShopModel.Store.ChiTietHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangHoa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietHoaDon">
+        <PropertyRef Name="HangHoaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietHoaDon_HoaDonBan">
+    <End Role="HoaDonBan" Type="iShopModel.Store.HoaDonBan" Multiplicity="0..1" />
+    <End Role="ChiTietHoaDon" Type="iShopModel.Store.ChiTietHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDonBan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietHoaDon">
+        <PropertyRef Name="HoaDonBanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HangHoa_DonViTinh">
+    <End Role="DonViTinh" Type="iShopModel.Store.DonViTinh" Multiplicity="1" />
+    <End Role="HangHoa" Type="iShopModel.Store.HangHoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonViTinh">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HangHoa">
+        <PropertyRef Name="DonViTinhID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HangHoa_NhomHangHoa">
+    <End Role="NhomHangHoa" Type="iShopModel.Store.NhomHangHoa" Multiplicity="1" />
+    <End Role="HangHoa" Type="iShopModel.Store.HangHoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhomHangHoa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HangHoa">
+        <PropertyRef Name="NhomHangHoaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDonBan_KhachHang">
+    <End Role="KhachHang" Type="iShopModel.Store.KhachHang" Multiplicity="0..1" />
+    <End Role="HoaDonBan" Type="iShopModel.Store.HoaDonBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HoaDonBan">
+        <PropertyRef Name="KhachHangID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDonBan_NhanVien">
+    <End Role="NhanVien" Type="iShopModel.Store.NhanVien" Multiplicity="0..1" />
+    <End Role="HoaDonBan" Type="iShopModel.Store.HoaDonBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HoaDonBan">
+        <PropertyRef Name="NhanVienID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NguoiDung_NhanVien">
+    <End Role="NhanVien" Type="iShopModel.Store.NhanVien" Multiplicity="0..1" />
+    <End Role="TaiKhoan" Type="iShopModel.Store.TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="NhanVienID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NhanVien_BoPhan">
+    <End Role="BoPhan" Type="iShopModel.Store.BoPhan" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="iShopModel.Store.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BoPhan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="BoPhanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>
